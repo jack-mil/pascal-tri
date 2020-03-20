@@ -16,6 +16,7 @@ The pascal module defines the following methods::
     - Pretty print to stdout a triangle with 'n' rows or (optionally) a supplied triangle:
         print_pascal(n:int, triangle=None) -> None
     
-Can be run as a script as well. 
-  pascal.py [-h] [-l LINES]
-If LINES not specified, runs in interactive loop
+Can be run as a script as well.
+
+    pascal.py [-h] [-l LINES]
+    If LINES not specified, runs in interactive loop
