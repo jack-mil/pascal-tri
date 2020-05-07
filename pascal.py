@@ -25,7 +25,7 @@ If LINES not specified, runs in interactive loop
 """
 
 
-__version__ = 1.2
+__version__ = 1.1
 
 
 def calculate_row(n: int) -> list:
