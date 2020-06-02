@@ -1,4 +1,5 @@
 # Author: Jackson Miller
+# https://github.com/jack-mil/pascal
 
 u"""
 Module for generating and printing Pascal's Triangle.
