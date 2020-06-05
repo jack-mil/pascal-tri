@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Author: Jackson Miller
 # https://github.com/jack-mil/pascal
 
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     import os
     import argparse as argp
 
-    parser = argp.ArgumentParser(description=__doc__)
+    parser = argp.ArgumentParser(description="Python module to generate pascal's triangle")
     parser.add_argument("-l", "--lines",
                         help="The number of lines to print", type=int)
     args = parser.parse_args()
