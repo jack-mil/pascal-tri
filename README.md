@@ -1,13 +1,16 @@
 # pascal
 Module for generating and printing Pascal's Triangle.
 
-    Includes methods for 
-    - generating a list of triangle rows
-    - pretty printing a triangle with correct spacing and alignment
+Explicit implimentation of Pascal's Triangle algorithm. Each row can be generated separately from all others. This vastly speeds up time if all you need is row 100 for example.  
+This module is intended to be useful for mathematics or anytime a row(s) of Pascal's triangle might be useful. 
+
+> Includes methods for 
+> * generating a list of triangle rows
+> * pretty printing a triangle with correct spacing and alignment
 
 The pascal module defines the following methods::
 
-    - To generate a standalone row 'n' of Pascal's triangle:
+    - To generate a explicit row 'n' of Pascal's triangle:
         calculate_row(n:int) -> list
 
     - To generate a list of 'n' rows:
