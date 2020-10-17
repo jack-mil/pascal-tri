@@ -65,9 +65,7 @@ def print_pascal(lines: int, triangle=None) -> None:
     max_num_width = len(str(last_row[len(last_row) // 2]))
 
     # Utility function to format one row of the triangle
-    def format_row(row):
-        line_str = " ".join([f"{element:^{max_num_width}}" for element in row])
-        return line_str
+    format_row = lambda row: " ".join([f"{element:^{max_num_width}}" for element in row])
 
     max_width = len(format_row(last_row))
 
