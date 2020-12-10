@@ -30,7 +30,10 @@ If LINES not specified, runs in interactive loop
 __version__ = 1.1
 
 
-def calculate_row(n: int) -> list:
+from typing import List
+
+
+def calculate_row(n: int) -> List[int]:
     """Calculate row 'n' of Pascal's triangle and return a list (0-indexed)."""
     line = [1]
     for k in range(1, n+1):
@@ -40,7 +43,7 @@ def calculate_row(n: int) -> list:
     return line
 
 
-def pascal(rows: int) -> list:
+def pascal(rows: int) -> List[List[int]]:
     """Calculate Pascal's triange with the specified number of lines and return a list of rows"""
     return [calculate_row(row) for row in range(rows)]
 
@@ -48,7 +51,7 @@ def pascal(rows: int) -> list:
 def print_pascal(lines: int, triangle=None) -> None:
     """Pretty print Pascal's triangle with the specified number of lines.
 
-    - lines -- truncated to an integer. BEWARE: Many lines can be messy 
+    - lines -- truncated to an integer. BEWARE: To many lines can be messy
 
     - Optionally, provide a triangle to be formatted and printed."""
 
@@ -56,7 +59,7 @@ def print_pascal(lines: int, triangle=None) -> None:
         print()
         return
 
-    if triangle == None:
+    if triangle is None:
         triangle = pascal(lines)
 
     last_row = triangle[-1]
@@ -65,7 +68,8 @@ def print_pascal(lines: int, triangle=None) -> None:
     max_num_width = len(str(last_row[len(last_row) // 2]))
 
     # Utility function to format one row of the triangle
-    format_row = lambda row: " ".join([f"{element:^{max_num_width}}" for element in row])
+    def format_row(row):
+        return " ".join([f"{element:^{max_num_width}}" for element in row])
 
     max_width = len(format_row(last_row))
 
@@ -81,12 +85,13 @@ if __name__ == "__main__":
     import os
     import argparse as argp
 
-    parser = argp.ArgumentParser(description="Python module to generate pascal's triangle")
+    parser = argp.ArgumentParser(
+        description="Python module to generate pascal's triangle")
     parser.add_argument("-l", "--lines",
                         help="The number of lines to print", type=int)
     args = parser.parse_args()
 
-    if args.lines != None:
+    if args.lines is not None:
         print_pascal(args.lines)
     else:
         while True:  # Emulate do_while loop
