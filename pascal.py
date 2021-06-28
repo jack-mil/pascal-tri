@@ -2,10 +2,10 @@
 # Author: Jackson Miller
 # https://github.com/jack-mil/pascal
 
-u"""
+"""
 Module for generating and printing Pascal's Triangle.
 
-    Includes methods for 
+    Includes methods for
     - generating a list of triangle rows
     - pretty printing a triangle with correct spacing and alignment
 
@@ -19,8 +19,8 @@ The pascal module defines the following methods::
 
     - Pretty print to stdout a triangle with 'n' rows or (optionally) a supplied triangle:
         print_pascal(n:int, triangle=None) -> None
-    
-Can be run as a script as well. 
+
+Can be run as a script as well.
 - As a script: pascal.py [-h] [-l LINES]
 If LINES not specified, runs in interactive loop
 
@@ -30,28 +30,25 @@ If LINES not specified, runs in interactive loop
 __version__ = 1.1
 
 
-from typing import List
-
-
-def calculate_row(n: int) -> List[int]:
+def calculate_row(n: int) -> list[int]:
     """Calculate row 'n' of Pascal's triangle and return a list (0-indexed)."""
     line = [1]
-    for k in range(1, n+1):
+    for k in range(1, n + 1):
         # Formula for element k in row n of Pascal's triangle
         value = line[k - 1] * (n + 1 - k) // k
         line.append(value)
     return line
 
 
-def pascal(rows: int) -> List[List[int]]:
+def pascal(rows: int) -> list[list[int]]:
     """Calculate Pascal's triange with the specified number of lines and return a list of rows"""
     return [calculate_row(row) for row in range(rows)]
 
 
-def print_pascal(lines: int, triangle=None) -> None:
+def print_pascal(lines: int, triangle: list[list[int]] = None) -> None:
     """Pretty print Pascal's triangle with the specified number of lines.
 
-    - lines -- truncated to an integer. BEWARE: To many lines can be messy
+    - lines -- truncated to an integer. BEWARE: Too many lines can be messy
 
     - Optionally, provide a triangle to be formatted and printed."""
 
@@ -86,9 +83,9 @@ if __name__ == "__main__":
     import argparse as argp
 
     parser = argp.ArgumentParser(
-        description="Python module to generate pascal's triangle")
-    parser.add_argument("-l", "--lines",
-                        help="The number of lines to print", type=int)
+        description="Python module to generate pascal's triangle"
+    )
+    parser.add_argument("-l", "--lines", help="The number of lines to print", type=int)
     args = parser.parse_args()
 
     if args.lines is not None:
@@ -102,10 +99,9 @@ if __name__ == "__main__":
             except ValueError:
                 print("Please enter an integer.")
 
-            response = input(
-                "\n...press enter to continue.... type 'stop' to exit\n")
+            response = input("\n...press enter to continue.... type 'stop' to exit\n")
             if response == "stop":
                 break
 
             # Clear the console
-            os.system('cls' if os.name == 'nt' else 'clear')
+            os.system("cls" if os.name == "nt" else "clear")

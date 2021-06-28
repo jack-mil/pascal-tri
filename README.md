@@ -1,7 +1,11 @@
 # pascal
+![image](https://img.shields.io/badge/code%20style-black-000000.svg)
+#### Requires *Python 3.9* (type hints)
+
 Module for generating and printing Pascal's Triangle.
 
-Explicit implimentation of Pascal's Triangle algorithm. Each row can be generated separately from all others. This vastly speeds up time if all you need is row 100 for example.  
+
+Explicit implementation of Pascal's Triangle algorithm. Each row can be generated separately from all others. This vastly speeds up time if all you need is row 100 for example.  
 This module is intended to be useful for mathematics or anytime a row(s) of Pascal's triangle might be useful. 
 
 > Includes methods for 
