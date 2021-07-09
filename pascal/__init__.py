@@ -12,25 +12,26 @@ Module for generating and printing Pascal's Triangle.
 The pascal module defines the following methods::
 
     - To generate a standalone row 'n' of Pascal's triangle:
-        calculate_row(n:int) -> list
+        calculate_row(n: int) -> PascalRow
 
     - To generate a list of 'n' rows:
-        pascal(n:int) -> list (of lists)
+        pascal(n: int) -> PascalTriangle
 
     - Pretty print to stdout a triangle with 'n' rows or (optionally) a supplied triangle:
-        print_pascal(n:int, triangle=None) -> None
+        print_pascal(n: int, triangle: PascalTriangle = None) -> None
 
-Can be run as a script as well.
-- As a script: pascal.py [-h] [-l LINES]
-If LINES not specified, runs in interactive loop
+Also defined are some type aliases::
 
+    - PascalRow = list[int]
+    - PascalTriangle = list[PascalRow]
 """
 
 
-__version__ = 1.1
+PascalRow = list[int]
+PascalTriangle = list[PascalRow]
 
 
-def calculate_row(n: int) -> list[int]:
+def calculate_row(n: int) -> PascalRow:
     """Calculate row 'n' of Pascal's triangle and return a list (0-indexed)."""
     line = [1]
     for k in range(1, n + 1):
@@ -40,12 +41,12 @@ def calculate_row(n: int) -> list[int]:
     return line
 
 
-def pascal(rows: int) -> list[list[int]]:
+def pascal(rows: int) -> PascalTriangle:
     """Calculate Pascal's triange with the specified number of lines and return a list of rows"""
     return [calculate_row(row) for row in range(rows)]
 
 
-def print_pascal(lines: int, triangle: list[list[int]] = None) -> None:
+def print_pascal(lines: int, triangle: PascalTriangle = None) -> None:
     """Pretty print Pascal's triangle with the specified number of lines.
 
     - lines -- truncated to an integer. BEWARE: Too many lines can be messy
@@ -62,46 +63,25 @@ def print_pascal(lines: int, triangle: list[list[int]] = None) -> None:
     last_row = triangle[-1]
 
     # Padding between each element
-    max_num_width = len(str(last_row[len(last_row) // 2]))
+    largest_num_size = len(str(last_row[len(last_row) // 2]))
 
     # Utility function to format one row of the triangle
-    def format_row(row):
-        return " ".join([f"{element:^{max_num_width}}" for element in row])
+    def format_row(row: PascalRow) -> str:
+        return " ".join([f"{element:^{largest_num_size}}" for element in row])
 
     max_width = len(format_row(last_row))
 
     # Finally, print each row
-    for row in range(lines):
-        f_row = format_row(triangle[row])
+    for row in triangle:
+        f_row = format_row(row)
         # Center the formated row in the space of longest row
         print(f"{f_row:^{max_width}}")
 
 
-# execute only if run as a script
-if __name__ == "__main__":
-    import os
-    import argparse as argp
+def version() -> str:
+    """
+    Get the version of the package installed via pip
+    """
+    from importlib import metadata
 
-    parser = argp.ArgumentParser(
-        description="Python module to generate pascal's triangle"
-    )
-    parser.add_argument("-l", "--lines", help="The number of lines to print", type=int)
-    args = parser.parse_args()
-
-    if args.lines is not None:
-        print_pascal(args.lines)
-    else:
-        while True:  # Emulate do_while loop
-            lines = input("Number of lines: ")
-
-            try:
-                print_pascal(int(lines))
-            except ValueError:
-                print("Please enter an integer.")
-
-            response = input("\n...press enter to continue.... type 'stop' to exit\n")
-            if response == "stop":
-                break
-
-            # Clear the console
-            os.system("cls" if os.name == "nt" else "clear")
+    return metadata.version("pascal-triangle")

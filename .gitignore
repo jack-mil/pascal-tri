@@ -1,1 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# Python Packaging
+dist/
+*.egg-info/
+build/
+out/
+
+# Code editors
 .vscode/
+.devcontainer/
