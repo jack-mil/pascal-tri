@@ -48,3 +48,4 @@ Can be run as a script as well.
 This project exists as an exercise in learning these techonlogies/concepts
  - Python type hinting (VS code intellisense integration)
  - Making distributable Python packages (PyPi)
+ - Github Actions to build/publish automatically
