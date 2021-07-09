@@ -5,6 +5,8 @@ name: Upload Python Package
 on:
   release:
     types: [published]
+  workflow_dispatch:
+
 
 jobs:
   deploy:
@@ -30,6 +32,6 @@ jobs:
 
     - name: Publish package with twine
       env:
-        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         twine upload --verbose -u '__token__' dist/*
