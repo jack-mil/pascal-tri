@@ -1,23 +1,24 @@
 # This workflow will build and upload the Python Package using Twine when a release is created
 
-name: Upload Python Package
+name: Release and Deploy Python Package
 
+# When a tagged commit is pushed to master
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
   workflow_dispatch:
 
 
 jobs:
   deploy:
-    name: PyPI Upload
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
@@ -35,3 +36,11 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         twine upload --verbose -u '__token__' dist/*
+
+    - name: Create release
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          dist/*
