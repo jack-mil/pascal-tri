@@ -1,9 +1,11 @@
-# pascal-triangle
+# Pascal-Triangle
+
 <div align="center">
-<a href="https://github.com/psf/black"> <img alt="Formatting" src="https://img.shields.io/badge/code%20style-black-000000.svg"> </a>
-<a href="https://github.com/jack-mil/pascal-triangle/blob/master/LICENSE"> <img alt="Github" src="https://img.shields.io/github/license/jack-mil/pascal-triangle"> </a>
-<a href="https://pypi.org/project/pascal-tri/"> <img alt="PyPi" src="https://img.shields.io/pypi/v/pascal-tri"> </a>
-<a href="https://pypi.org/project/pascal-tri/"> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pascal-tri"> </a>
+<a href="https://pypi.org/project/pascal-tri/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pascal-tri?style=flat-square&label=Python&logo=python&logoColor=yellow"></a>
+<a href="https://pypi.org/project/pascal-tri/"> <img alt="PyPi" src="https://img.shields.io/pypi/v/pascal-tri?style=flat-square&label=PyPI&logo=pypi&logoColor=yellow"></a>
+<a href="https://pypi.org/project/pascal-tri/"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/pascal-tri?style=flat-square&label=Downloads"></a>
+<a href="https://github.com/jack-mil/pascal-triangle/blob/master/LICENSE"> <img alt="Github" src="https://img.shields.io/github/license/jack-mil/pascal-triangle?style=flat-square&label=License"></a>
+<a href="https://github.com/psf/black"><img alt="Formatting" src="https://img.shields.io/badge/Code%20Style-Black-000000?style=flat-square"></a>
 </div>
 
 ## Module for generating and printing Pascal's Triangle ##
